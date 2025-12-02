@@ -16,6 +16,9 @@ typedef struct variant_info {
     std::string device;
     std::string marketname;
     std::string model;
+    std::string axion_processor_info;
+    std::string device_camera_info_front;
+    std::string device_camera_info_rear;
     std::string build_fingerprint;
 
     unsigned int dpi;

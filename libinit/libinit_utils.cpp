@@ -29,6 +29,7 @@ std::vector<std::string> ro_props_default_source_order = {
     "system_ext.",
     "vendor.",
     "vendor_dlkm.",
+    "sys.",
     "",
 };
 
@@ -40,6 +41,19 @@ void set_ro_build_prop(const std::string &prop, const std::string &value, bool p
             prop_name = "ro.product." + source + prop;
         else
             prop_name = "ro." + source + "build." + prop;
+
+        property_override(prop_name, value, true);
+    }
+}
+
+void set_persist_build_prop(const std::string &prop, const std::string &value, bool sys) {
+    std::string prop_name;
+
+    for (const auto &source : ro_props_default_source_order) {
+        if (sys)
+            prop_name = "persist.sys." + source + prop;
+        else
+            prop_name = "persist." + source + prop;
 
         property_override(prop_name, value, true);
     }

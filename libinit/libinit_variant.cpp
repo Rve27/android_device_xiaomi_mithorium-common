@@ -13,6 +13,10 @@ void set_variant_props(const variant_info_t variant) {
     set_ro_build_prop("device", variant.device, true);
     set_ro_build_prop("marketname", variant.marketname, true);
     set_ro_build_prop("model", variant.model, true);
+    set_persist_build_prop("axion_processor_info", variant.axion_processor_info, true);
+    set_persist_build_prop("device_camera_info_front", variant.device_camera_info_front, true);
+    set_persist_build_prop("device_camera_info_rear", variant.device_camera_info_rear, true);
+
 
     if (variant.dpi)
         property_override("ro.sf.lcd_density", std::to_string(variant.dpi));
